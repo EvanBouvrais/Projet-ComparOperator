@@ -20,7 +20,7 @@
             $this->id = $data['id'];
             $this->location = $data['location'];
             $this->price = $data['price'];
-            $this->tourOperatorId = $data['tourOperatorId'];
+            $this->tourOperatorId = (int) $data['tourOperatorId'];
             
         }
 
