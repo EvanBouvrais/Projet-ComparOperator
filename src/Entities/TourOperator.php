@@ -18,13 +18,13 @@
         ///////////////
             
         public function __construct(array $data) {
-            
+
             $this->id = $data['id'];
             $this->name = $data['name'];
             $this->link = $data['link'];
-            $this->gradeCount = $data['gradeCount'];
-            $this->gradeTotal = $data['gradeTotal'];
-            $this->isPremium = $data['isPremium'];
+            $this->gradeCount = $data['grade_count'];
+            $this->gradeTotal = $data['grade_total'];
+            $this->isPremium = $data['is_premium'];
 
         }
     
