@@ -104,7 +104,6 @@
                 Carte
             </div>
 
-        </div>
 
     </main>
 
