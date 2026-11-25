@@ -1,0 +1,3 @@
+RewriteEngine On
+
+RewriteRule ^.+\.php/admin/?$ admin/admin.php [END]
