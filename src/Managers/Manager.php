@@ -6,55 +6,145 @@
         // Variables //
         ///////////////
         
-        private $bdd;
+        private PDO $bdd;
 
         ///////////////
         // Construct //
         ///////////////
 
-        public function __construct() {
+        public function __construct(PDO $bdd) {
             
-        }
-
-        ////////////////////////
-        // Getter and Setters //
-        ////////////////////////
-
-        public function getAllDestination() {
+            $this->bdd = $bdd;
 
         }
 
-        public function getOperatorByDestination() {
+        //////////////////////
+        // Database Methods //
+        //////////////////////
+
+        public function getAllDestination(): array {
+
+            $request = $this->bdd->query("SELECT * FROM destination");
+
+            $destinationDatas = $request->fetchAll(PDO::FETCH_ASSOC);
+
+            $destinations = [];
+
+            foreach ($destinationDatas as $destinationData) {
+
+                $destinations[] = new Destination($destinationData);
+
+            }
+
+            return $destinations;
 
         }
 
-        public function createReview() {
+        public function getOperatorByDestination(int $destinationId): array {
+
+            $request = $this->bdd->prepare("  SELECT tour_operator.* FROM destination
+                                            JOIN tour_operator ON destination.tour_operator_id = tour_operator.id
+                                            WHERE destination.id = :destinationId");
+
+            $request->execute(['destinationId' => $destinationId]);
+
+            $operatorDatas = $request->fetch(PDO::FETCH_ASSOC);
+
+            $operators = [];
+
+            foreach ($operatorDatas as $operatorData) {
+
+                $operators[] = new TourOperator($operatorData);
+
+            }
+            
+            return $operators;
 
         }
 
-        public function getReviewByOperatorId() {
+        public function createReview(Reviews $review): void {
+
+            $request = $this->bdd->prepare("    INSERT INTO review    (message, author, tour_operator_id)
+                                                Values                (:message, :author, :tourOperatorId)");
+            $request->execute([ 'message' => $review->getMessage(), 
+                                'author' => $review->getAuthor(), 
+                                'tourOperatorId' => $review->getTourOperatorId()
+            ]);
 
         }
+
+        public function getReviewByOperatorId(int $operatorId): array {
+
+            $request = $this->bdd->prepare("  SELECT review.* FROM review
+                                            JOIN tour_operator ON review.tour_operator_id = tour_operator.id
+                                            WHERE tour_operator.id = :operatorId");
+
+            $request->execute(['operatorId' => $operatorId]);
+
+            $reviewDatas = $request->fetchAll(PDO::FETCH_ASSOC);
+
+            $reviews = [];
+
+            foreach ($reviewDatas as $reviewData) {
+
+                $reviews[] = new Reviews($reviewData);
+
+            }
+            
+            return $reviews;
+
+        }
+
+        public function getAllOperator(): array {
+
+            $request = $this->bdd->query("SELECT * FROM tour_operator");
+
+            $operatorDatas = $request->fetchAll(PDO::FETCH_ASSOC);
+
+            $operators = [];
+
+            foreach ($operatorDatas as $operatorData) {
+
+                $operators[] = new TourOperator($operatorData);
+
+            }
+
+            return $operators;
+
+        }
+
+        public function updateOperatorToPremium(int $operatorId): void {
+
+            $request = $this->bdd->prepare("UPDATE tour_operator SET is_premium = 1 WHERE id = :id");
+            $request->execute(['id' => $operatorId]);
+
+        }
+
+        public function createTourOperator(TourOperator $tourOperator): void {
+
+            $request = $this->bdd->prepare("    INSERT INTO tour_operator    (name, link, grade_count, grade_total, is_premium)
+                                                Values               (:name, :link, :grade_count, :grade_total, :is_premium)");
+            $request->execute([ 'name' => $tourOperator->getName(), 
+                                'link' => $tourOperator->getLink(), 
+                                'grade_count' => $tourOperator->getGradeCount(),
+                                'grade_total' => $tourOperator->getGradeTotal(),
+                                'is_premium' => $tourOperator->getIsPremium()
+            ]);
+
+        }
+
+        public function createDestination(Destination $destination): void {
+
+            $request = $this->bdd->prepare("    INSERT INTO destination    (location, price, tour_operator_id)
+                                                Values               (:location, :price, :tour_operator_id)");
+            $request->execute([ 'location' => $destination->getLocation(), 
+                                'price' => $destination->getPrice(), 
+                                'tour_operator_id' => $destination->getTourOperatorId()
+            ]);
+
+        }
+
         
-        //////////////
-        // Methodes //
-        //////////////
-
-        public function getAllOperator() {
-
-        }
-
-        public function updateOperatorToPremium() {
-
-        }
-
-        public function createTourOperator() {
-
-        }
-
-        public function createDestination() {
-
-        }
     
     }
 
