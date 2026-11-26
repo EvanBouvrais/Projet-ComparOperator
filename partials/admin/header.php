@@ -1,4 +1,16 @@
-<h1 class="text-2xl">Bienvenu sur la page admin</h1>
+<div class="flex justify-between items-center">
+
+    <h1 class="text-2xl">Bienvenu sur la page admin</h1>
+
+    <a href="/Projet-ComparOperator/admin/logout.php"
+    class="flex justify-center items-center bg-green-600 border-3 border-green-500
+    hover:bg-green-700 hover:border-green-600 h-10 m-5 w-40 rounded-[10px]">
+
+        Déconnexion
+
+    </a>
+
+</div>
 
 <nav class="mt-10 flex items-center">
 
