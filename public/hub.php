@@ -42,9 +42,9 @@
                 </a>
 
                 <a href="operateur.php?location=New%20York" class="flex flex-col cursor-pointer">
-                    <div class="bg-white rounded-xl h-40 p-4 bg-[url('../assets/images/USA.png')] bg-cover bg-center"></div>
-                    <h2 class="text-center text-3xl">NEW YORK</h2>
-                    <p class="text-1xl font-['Inter']">Explorez la ville qui ne dort jamais.</p>
+                    <div class="bg-white rounded-xl h-40 p-4 bg-[url('../assets/images/ViceCity.png')] bg-cover bg-center"></div>
+                    <h2 class="text-center text-3xl">Vice City</h2>
+                    <p class="text-1xl font-['Inter'] caret-amber-500">Explorez la ville qui ne dort JAMAIS l'etat de leonida.</p>
                 </a>
 
                 <a href="operateur.php?location=Banff" class="flex flex-col cursor-pointer">
