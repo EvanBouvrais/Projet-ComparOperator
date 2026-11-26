@@ -96,8 +96,11 @@ bg-[url('../assets/backgrounds/admin-background.jpg')] text-white">
                 <?php } ?>
 
                 <button type="submit"
-                    class="w-full bg-green-600 hover:bg-green-700 border-3 border-green-500 hover:border-green-600 text-white rounded-md p-2">
+                class="w-full bg-green-600 hover:bg-green-700 border-3
+                border-green-500 hover:border-green-600 text-white rounded-md p-2">
+
                     Se connecter
+                    
                 </button>
 
             </form>
