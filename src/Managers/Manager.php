@@ -128,7 +128,7 @@
                                 'link' => $tourOperator->getLink(), 
                                 'grade_count' => $tourOperator->getGradeCount(),
                                 'grade_total' => $tourOperator->getGradeTotal(),
-                                'is_premium' => $tourOperator->getIsPremium()
+                                'is_premium' => (int) $tourOperator->getIsPremium()
             ]);
 
         }
