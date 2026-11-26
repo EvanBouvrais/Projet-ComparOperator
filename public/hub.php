@@ -35,68 +35,59 @@
 
             <div class="grid grid-cols-3 gap-2">
 
-                <!-- Japon -->
-                <div class="flex flex-col">
+                <a href="operateur.php?location=Tokyo" class="flex flex-col cursor-pointer">
                     <div class="bg-white rounded-xl h-40 p-4 bg-[url('../assets/images/japon.png')] bg-cover bg-center"></div>
-                    <h2 class="text-center text-3xl">JAPON</h2>
-                    <p class="text-1xl font-['Inter']">Découvrez les traditions japonaises.</p>
-                </div>
+                    <h2 class="text-center text-3xl">TOKYO</h2>
+                    <p class="text-1xl font-['Inter']">Découvrez une ville entre traditions et modernité.</p>
+                </a>
 
-                <!-- États-Unis -->
-                <div class="flex flex-col">
+                <a href="operateur.php?location=New%20York" class="flex flex-col cursor-pointer">
                     <div class="bg-white rounded-xl h-40 p-4 bg-[url('../assets/images/USA.png')] bg-cover bg-center"></div>
-                    <h2 class="text-center text-3xl">ÉTATS-UNIS</h2>
-                    <p class="text-1xl font-['Inter']">Explorez des villes et des paysages mythiques.</p>
-                </div>
+                    <h2 class="text-center text-3xl">NEW YORK</h2>
+                    <p class="text-1xl font-['Inter']">Explorez la ville qui ne dort jamais.</p>
+                </a>
 
-                <!-- Canada -->
-                <div class="flex flex-col">
+                <a href="operateur.php?location=Banff" class="flex flex-col cursor-pointer">
                     <div class="bg-white rounded-xl h-40 p-4 bg-[url('../assets/images/canada.png')] bg-cover bg-center"></div>
-                    <h2 class="text-center text-3xl">CANADA</h2>
-                    <p class="text-1xl font-['Inter']">Évadez-vous au cœur des grands espaces.</p>
-                </div>
+                    <h2 class="text-center text-3xl">BANFF</h2>
+                    <p class="text-1xl font-['Inter']">Évadez-vous au cœur des montagnes canadiennes.</p>
+                </a>
 
-                <!-- Grèce -->
-                <div class="flex flex-col">
+                <a href="operateur.php?location=Oia" class="flex flex-col cursor-pointer">
                     <div class="bg-white rounded-xl h-40 p-4 bg-[url('../assets/images/grece.png')] bg-cover bg-center"></div>
-                    <h2 class="text-center text-3xl">GRÈCE</h2>
-                    <p class="text-1xl font-['Inter']">Entre îles paradisiaques et histoire antique.</p>
-                </div>
+                    <h2 class="text-center text-3xl">OIA</h2>
+                    <p class="text-1xl font-['Inter']">Admirez les maisons blanches et la mer Égée.</p>
+                </a>
 
-                <!-- Thaïlande -->
-                <div class="flex flex-col">
+                <a href="operateur.php?location=Bangkok" class="flex flex-col cursor-pointer">
                     <div class="bg-white rounded-xl h-40 p-4 bg-[url('../assets/images/tahilande.png')] bg-cover bg-center"></div>
-                    <h2 class="text-center text-3xl">THAÏLANDE</h2>
-                    <p class="text-1xl font-['Inter']">Découvrez des plages tropicales et des temples magnifiques.</p>
-                </div>
+                    <h2 class="text-center text-3xl">BANGKOK</h2>
+                    <p class="text-1xl font-['Inter']">Découvrez ses temples et ses marchés animés.</p>
+                </a>
 
-                <!-- Italie -->
-                <div class="flex flex-col">
+                <a href="operateur.php?location=Rome" class="flex flex-col cursor-pointer">
                     <div class="bg-white rounded-xl h-40 p-4 bg-[url('../assets/images/italie.png')] bg-cover bg-center"></div>
-                    <h2 class="text-center text-3xl">ITALIE</h2>
-                    <p class="text-1xl font-['Inter']">Savourez un mélange d'art, d'histoire et de gastronomie.</p>
-                </div>
+                    <h2 class="text-center text-3xl">ROME</h2>
+                    <p class="text-1xl font-['Inter']">Découvrez les monuments de la ville éternelle.</p>
+                </a>
 
-                <!-- Maroc -->
-                <div class="flex flex-col">
+                <a href="operateur.php?location=Marrakech" class="flex flex-col cursor-pointer">
                     <div class="bg-white rounded-xl h-40 p-4 bg-[url('../assets/images/maroc.png')] bg-cover bg-center"></div>
-                    <h2 class="text-center text-3xl">MAROC</h2>
-                    <p class="text-1xl font-['Inter']">Explorez des médinas colorées et des déserts majestueux.</p>
-                </div>
+                    <h2 class="text-center text-3xl">MARRAKECH</h2>
+                    <p class="text-1xl font-['Inter']">Explorez ses souks et ses palais historiques.</p>
+                </a>
 
-                <!-- Océan -->
-                <div class="flex flex-col">
+                <a href="operateur.php?location=Monaco" class="flex flex-col cursor-pointer">
                     <div class="bg-white rounded-xl h-40 p-4 bg-[url('../assets/images/fish.png')] bg-cover bg-center"></div>
-                    <h2 class="text-center text-3xl">OCÉAN</h2>
-                    <p class="text-1xl font-['Inter']">Plongez dans les profondeurs à la rencontre du poisson.</p>
-                </div>
+                    <h2 class="text-center text-3xl">MONACO</h2>
+                    <p class="text-1xl font-['Inter']">Découvrez les merveilles de la Méditerranée.</p>
+                </a>
 
-                <!-- Espagne -->
-                <div class="flex flex-col">
+                <a href="operateur.php?location=Barcelone" class="flex flex-col cursor-pointer">
                     <div class="bg-white rounded-xl h-40 p-4 bg-[url('../assets/images/espagne.png')] bg-cover bg-center"></div>
-                    <h2 class="text-center text-3xl">ESPAGNE</h2>
-                    <p class="text-1xl font-['Inter']">Profitez du soleil, de la culture et de la Méditerranée.</p>
-                </div>
+                    <h2 class="text-center text-3xl">BARCELONE</h2>
+                    <p class="text-1xl font-['Inter']">Profitez du soleil et de l'architecture catalane.</p>
+                </a>
 
             </div>
 
