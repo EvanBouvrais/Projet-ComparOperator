@@ -5,7 +5,7 @@
         ///////////////
         // Variables //
         ///////////////
-        
+
         private int $id;
         private string $name;
         private string $link;
@@ -16,7 +16,7 @@
         ///////////////
         // Construct //
         ///////////////
-            
+
         public function __construct(array $data) {
 
             $this->id = $data['id'];
@@ -27,7 +27,7 @@
             $this->isPremium = $data['is_premium'];
 
         }
-    
+
         /////////////////////////
         // Getters and Setters //
         /////////////////////////
@@ -65,6 +65,40 @@
         public function getIsPremium(): bool {
 
             return $this->isPremium;
+
+        }
+
+        /////////////
+        // Methods //
+        /////////////
+
+        public function getAverageGrade(): float {
+
+            if ($this->gradeCount == 0) {
+                return 0;
+            }
+
+            return $this->gradeTotal / $this->gradeCount;
+
+        }
+
+        public function getStars(): string {
+
+            $average = round($this->getAverageGrade());
+
+            $stars = "";
+
+            for ($i = 1; $i <= 5; $i++) {
+
+                if ($i <= $average) {
+                    $stars .= "★";
+                } else {
+                    $stars .= "☆";
+                }
+
+            }
+
+            return $stars;
 
         }
 

@@ -143,7 +143,60 @@
             ]);
 
         }
+            public function getLowestPricesByOperator(): array {
 
+            $request = $this->bdd->query(
+                "SELECT tour_operator_id, MIN(price)
+                FROM destination
+                GROUP BY tour_operator_id"
+            );
+
+            $prices = $request->fetchAll(PDO::FETCH_KEY_PAIR);
+
+            return $prices;
+
+        }
+
+        public function getOperatorsByLocation(string $location): array {
+
+            $request = $this->bdd->prepare("
+                SELECT DISTINCT tour_operator.*
+                FROM tour_operator
+                JOIN destination
+                ON tour_operator.id = destination.tour_operator_id
+                WHERE destination.location = :location
+            ");
+
+            $request->execute(['location' => $location]);
+
+            $operatorDatas = $request->fetchAll(PDO::FETCH_ASSOC);
+
+            $operators = [];
+
+            foreach ($operatorDatas as $operatorData) {
+
+                $operators[] = new TourOperator($operatorData);
+
+            }
+
+            return $operators;
+
+        }
+
+        public function getPricesByLocation(string $location): array {
+
+            $request = $this->bdd->prepare("
+                SELECT tour_operator_id, MIN(price)
+                FROM destination
+                WHERE location = :location
+                GROUP BY tour_operator_id
+            ");
+
+            $request->execute(['location' => $location]);
+
+            return $request->fetchAll(PDO::FETCH_KEY_PAIR);
+
+        }
         
     
     }
