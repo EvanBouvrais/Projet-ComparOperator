@@ -5,6 +5,8 @@
 
     $manager = new Manager($db);
     
+    $password = "Admin";
+
     $location = $_GET['location'] ?? '';
 
     if ($location != '') {

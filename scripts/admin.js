@@ -1,3 +1,7 @@
+////////////////////
+// Boutons switch //
+////////////////////
+
 // Récupère tous les boutons possédant un attribut data-target
 const buttons = document.querySelectorAll("[data-target]");
 
@@ -24,3 +28,11 @@ buttons.forEach(button => {
     });
 
 });
+
+/////////////////////////
+// Pop-up mot de passe //
+/////////////////////////
+
+function closeConnexion() {
+    window.location.href = "/Projet-ComparOperator/public/hub.php";
+}
