@@ -4,11 +4,45 @@
     require_once '../utils/db_connect.php';
 
     $manager = new Manager($db);
-    
+
     $password = "Admin";
 
     $location = $_GET['location'] ?? '';
 
+    $errorsReview = [];
+
+    // Traitement du nouveau commentaire
+    $selectedOperatorId = 0;
+    if (isset($_POST['addReview'])) {
+
+        $author = trim($_POST['name']);
+        $operatorId = (int) $_POST['tour_operator_id'];
+        $grade = (int) ($_POST['grade'] ?? 0);
+
+        if ($grade < 1 || $grade > 5) {
+
+            $errorsReview[$operatorId] = "Veuillez sélectionner une note valide.";
+
+        } elseif (!$manager->hasAlreadyReviewed($author, $operatorId)) {
+
+            $review = new Reviews([
+                'id' => 0,
+                'author' => $author,
+                'message' => $_POST['commentaire'],
+                'tour_operator_id' => $operatorId
+            ]);
+
+            $manager->createReview($review);
+            $manager->addGrade($operatorId, $grade);
+
+        } else {
+
+            $errorsReview[$operatorId] = "Vous avez déjà posté un commentaire pour cet opérateur.";
+
+        }
+    }
+
+    // Récupération des opérateurs
     if ($location != '') {
 
         $operators = $manager->getOperatorsByLocation($location);
@@ -19,36 +53,6 @@
         $operators = $manager->getAllOperator();
         $prices = $manager->getLowestPricesByOperator();
 
-    }
-
-    // dégage l'erreur Intelephense
-    $errorsReview = [];
-
-    // Traitement du nouveau commentaire
-    $selectedOperatorId = 0;
-    if (isset($_POST['addReview'])) {
-
-        $author = trim($_POST['name']);
-        $operatorId = (int) $_POST['tour_operator_id'];
-
-        $selectedOperatorId = $operatorId;
-
-        if (!$manager->hasAlreadyReviewed($author, $operatorId)) {
-
-            $review = new Reviews([
-                'id' => 0,
-                'author' => $author,
-                'message' => $_POST['commentaire'],
-                'tour_operator_id' => $operatorId
-            ]);
-
-            $manager->createReview($review);
-
-        } else {
-
-            $errorsReview[$operatorId] = "Vous avez déjà posté un commentaire pour cet opérateur.";
-
-        }
     }
 
     // Récupération des commentaires
@@ -87,10 +91,18 @@ class="font-['Anton'] bg-[url('../assets/backgrounds/ciel.png')] bg-cover bg-cen
 
         <header>
 
-            <nav class="relative flex items-center w-full pb-10 mb-20 pt-10 mt-5">
+            <nav class="flex flex-wrap items-center justify-center gap-5 p-6 border-b border-gray-300">
+
                 <a href="hub.php">
-                    <img src="../assets/images/Logo.png" alt="Logo" class="w-50 absolute left-0">
-                </a> 
+                    <img src="../assets/images/Logo.png" alt="Logo" class="w-50">
+                </a>
+
+                <div class="flex gap-5 font-['Inter'] text-sm">
+
+                    
+
+                </div>
+
             </nav>
 
         </header>
@@ -136,6 +148,19 @@ class="font-['Anton'] bg-[url('../assets/backgrounds/ciel.png')] bg-cover bg-cen
 
                             </button>
 
+                            <?php if ($operator->getIsPremium()) { ?>
+
+                            <a href="<?= htmlspecialchars($operator->getLink()) ?>"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="bg-[#102A1B] text-white rounded-xl px-5 py-2 mt-3 cursor-pointer">
+
+                                Visiter le site
+
+                            </a>
+
+                        <?php } ?>
+
                         </div>
 
                     </div>
@@ -180,6 +205,21 @@ class="font-['Anton'] bg-[url('../assets/backgrounds/ciel.png')] bg-cover bg-cen
                                     </p>
 
                                 <?php } ?>
+                                <div class="note-etoiles">
+
+                                    <?php for ($i = 5; $i >= 1; $i--) { ?>
+
+                                        <input type="radio" name="grade" value="<?= $i ?>"
+                                        id="star-<?= $operator->getId() ?>-<?= $i ?>"
+                                        aria-label="<?= $i ?> étoiles" required>
+
+                                        <label for="star-<?= $operator->getId() ?>-<?= $i ?>">
+                                            ★
+                                        </label>
+
+                                    <?php } ?>
+
+                                </div>
 
                                 <textarea placeholder="Votre avis..." required name="commentaire"
                                 rows="4" class="border-2 rounded-[9px] border-gray-300 px-2"></textarea>

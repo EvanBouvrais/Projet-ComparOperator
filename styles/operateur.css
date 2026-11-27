@@ -25,3 +25,37 @@
     transform: translateX(0);
     opacity: 1;
 }
+.note-etoiles {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+}
+
+.note-etoiles input {
+    position: absolute;
+    opacity: 0;
+}
+
+.note-etoiles label {
+    font-size: 40px;
+    color: #cccccc;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.note-etoiles input:checked ~ label {
+    color: #FFB000;
+}
+
+.note-etoiles:hover label {
+    color: #cccccc;
+}
+
+.note-etoiles label:hover,
+.note-etoiles label:hover ~ label {
+    color: #FFB000;
+}
+
+.note-etoiles input:focus-visible + label {
+    outline: 2px solid black;
+}

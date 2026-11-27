@@ -255,6 +255,22 @@
             return $request->fetch() !== false;
 
         }
+
+                public function addGrade(int $operatorId, int $grade): void {
+
+            $request = $this->bdd->prepare("
+                UPDATE tour_operator
+                SET grade_count = grade_count + 1,
+                    grade_total = grade_total + :grade
+                WHERE id = :id
+            ");
+
+            $request->execute([
+                'grade' => $grade,
+                'id' => $operatorId
+            ]);
+
+        }
     
     }
 
