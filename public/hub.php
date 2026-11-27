@@ -66,7 +66,7 @@
                     <p class="font-['Inter'] text-sm text-gray-600">Découvrez une ville entre traditions et modernité.</p>
                 </a>
 
-                <a href="operateur.php?location=New%20York" class="destination-card flex flex-col cursor-pointer">
+                <a href="operateur.php?location=ViceCity" class="destination-card flex flex-col cursor-pointer">
                     <div class="bg-white rounded-xl h-40 p-4 bg-[url('../assets/images/ViceCity.png')] bg-cover bg-center hover:scale-105 transition duration-300"></div>
                     <h2 class="text-center text-3xl mt-2">VICE CITY</h2>
                     <p class="font-['Inter'] text-sm text-gray-600">Explorez la ville qui ne dort jamais dans l'État de Leonida.</p>
