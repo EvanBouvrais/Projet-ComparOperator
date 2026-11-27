@@ -17,6 +17,7 @@
 
         $author = trim($_POST['name']);
         $operatorId = (int) $_POST['tour_operator_id'];
+        $selectedOperatorId = $operatorId;
         $grade = (int) ($_POST['grade'] ?? 0);
 
         if ($grade < 1 || $grade > 5) {
