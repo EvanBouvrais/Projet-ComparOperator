@@ -59,56 +59,55 @@
 
             <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
 
-                <!-- // TODO -->
-                <a href="operateur.php?location=Tokyo" class="destination-card flex flex-col cursor-pointer">
+                <a href="operateur.php?location=Tokyo" class="destination-card flex flex-col cursor-pointer" data-lat="35.6762" data-lon="139.6503">
                     <div class="bg-white rounded-xl h-40 p-4 bg-[url('../assets/images/japon.png')] bg-cover bg-center hover:scale-105 transition duration-300"></div>
                     <h2 class="text-center text-3xl mt-2">TOKYO</h2>
                     <p class="font-['Inter'] text-sm text-gray-600">Découvrez une ville entre traditions et modernité.</p>
                 </a>
 
-                <a href="operateur.php?location=New%20York" class="destination-card flex flex-col cursor-pointer">
+                <a href="operateur.php?location=New%20York" class="destination-card flex flex-col cursor-pointer" data-lat="25.7617" data-lon="-80.1918">
                     <div class="bg-white rounded-xl h-40 p-4 bg-[url('../assets/images/ViceCity.png')] bg-cover bg-center hover:scale-105 transition duration-300"></div>
                     <h2 class="text-center text-3xl mt-2">VICE CITY</h2>
                     <p class="font-['Inter'] text-sm text-gray-600">Explorez la ville qui ne dort jamais dans l'État de Leonida.</p>
                 </a>
 
-                <a href="operateur.php?location=Banff" class="destination-card flex flex-col cursor-pointer">
+                <a href="operateur.php?location=Banff" class="destination-card flex flex-col cursor-pointer" data-lat="51.1784" data-lon="-115.5708">
                     <div class="bg-white rounded-xl h-40 p-4 bg-[url('../assets/images/canada.png')] bg-cover bg-center hover:scale-105 transition duration-300"></div>
                     <h2 class="text-center text-3xl mt-2">BANFF</h2>
                     <p class="font-['Inter'] text-sm text-gray-600">Évadez-vous au cœur des montagnes canadiennes.</p>
                 </a>
 
-                <a href="operateur.php?location=Oia" class="destination-card flex flex-col cursor-pointer">
+                <a href="operateur.php?location=Oia" class="destination-card flex flex-col cursor-pointer" data-lat="36.4618" data-lon="25.3753">
                     <div class="bg-white rounded-xl h-40 p-4 bg-[url('../assets/images/grece.png')] bg-cover bg-center hover:scale-105 transition duration-300"></div>
                     <h2 class="text-center text-3xl mt-2">OIA</h2>
                     <p class="font-['Inter'] text-sm text-gray-600">Admirez les maisons blanches et la mer Égée.</p>
                 </a>
 
-                <a href="operateur.php?location=Bangkok" class="destination-card flex flex-col cursor-pointer">
+                <a href="operateur.php?location=Bangkok" class="destination-card flex flex-col cursor-pointer" data-lat="13.7563" data-lon="100.5018">
                     <div class="bg-white rounded-xl h-40 p-4 bg-[url('../assets/images/tahilande.png')] bg-cover bg-center hover:scale-105 transition duration-300"></div>
                     <h2 class="text-center text-3xl mt-2">BANGKOK</h2>
                     <p class="font-['Inter'] text-sm text-gray-600">Découvrez ses temples et ses marchés animés.</p>
                 </a>
 
-                <a href="operateur.php?location=Rome" class="destination-card flex flex-col cursor-pointer">
+                <a href="operateur.php?location=Rome" class="destination-card flex flex-col cursor-pointer" data-lat="41.9028" data-lon="12.4964">
                     <div class="bg-white rounded-xl h-40 p-4 bg-[url('../assets/images/italie.png')] bg-cover bg-center hover:scale-105 transition duration-300"></div>
                     <h2 class="text-center text-3xl mt-2">ROME</h2>
                     <p class="font-['Inter'] text-sm text-gray-600">Découvrez les monuments de la ville éternelle.</p>
                 </a>
 
-                <a href="operateur.php?location=Marrakech" class="destination-card flex flex-col cursor-pointer">
+                <a href="operateur.php?location=Marrakech" class="destination-card flex flex-col cursor-pointer" data-lat="31.6295" data-lon="-7.9811">
                     <div class="bg-white rounded-xl h-40 p-4 bg-[url('../assets/images/maroc.png')] bg-cover bg-center hover:scale-105 transition duration-300"></div>
                     <h2 class="text-center text-3xl mt-2">MARRAKECH</h2>
                     <p class="font-['Inter'] text-sm text-gray-600">Explorez ses souks et ses palais historiques.</p>
                 </a>
 
-                <a href="operateur.php?location=Monaco" class="destination-card flex flex-col cursor-pointer">
+                <a href="operateur.php?location=Monaco" class="destination-card flex flex-col cursor-pointer" data-lat="43.7384" data-lon="7.4246">
                     <div class="bg-white rounded-xl h-40 p-4 bg-[url('../assets/images/fish.png')] bg-cover bg-center hover:scale-105 transition duration-300"></div>
                     <h2 class="text-center text-3xl mt-2">MONACO</h2>
                     <p class="font-['Inter'] text-sm text-gray-600">Découvrez les merveilles de la Méditerranée.</p>
                 </a>
 
-                <a href="operateur.php?location=Barcelone" class="destination-card flex flex-col cursor-pointer">
+                <a href="operateur.php?location=Barcelone" class="destination-card flex flex-col cursor-pointer" data-lat="41.3874" data-lon="2.1686">
                     <div class="bg-white rounded-xl h-40 p-4 bg-[url('../assets/images/espagne.png')] bg-cover bg-center hover:scale-105 transition duration-300"></div>
                     <h2 class="text-center text-3xl mt-2">BARCELONE</h2>
                     <p class="font-['Inter'] text-sm text-gray-600">Profitez du soleil et de l'architecture catalane.</p>
@@ -116,7 +115,16 @@
 
             </div>
 
-            <div class="bg-gray-200 rounded-xl min-h-80 bg-[url('../assets/images/maps.png')] bg-cover bg-center">
+            <div class="rounded-xl h-full overflow-hidden">
+
+                <iframe
+                    id="map"
+                    src="https://www.openstreetmap.org/export/embed.html?bbox=130%2C-5%2C145%2C60&layer=mapnik"
+                    class="w-full h-full"
+                    loading="lazy"
+                    title="Carte des destinations">
+                </iframe>
+
             </div>
 
         </div>
@@ -172,5 +180,6 @@
     </main>
 
 <script src="../scripts/hub.js"></script>
+<script src="../scripts/OpenStreetMap.js"></script>
 </body>
 </html>
