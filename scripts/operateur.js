@@ -1,3 +1,7 @@
+//////////////////////////////////////////
+// Affiche le panel au clique du bouton //
+//////////////////////////////////////////
+
 const boutons = document.querySelectorAll(".bouton-avis");
 const cadre = document.querySelector(".cadre-operateur");
 const commentaires = document.querySelectorAll(".avis-operateur");
@@ -33,3 +37,29 @@ for (let bouton of boutons) {
     });
 
 }
+
+////////////////////////////////////////////////////////
+// Garder le panel des commentaires ouvert après POST //
+////////////////////////////////////////////////////////
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    const selectedOperatorId = document.body.dataset.selectedOperator;
+
+    if (selectedOperatorId !== "0") {
+
+        const panel = document.getElementById(`avis-${selectedOperatorId}`);
+
+        if (panel) {
+
+            cadre.classList.add("active");
+
+            panel.removeAttribute('hidden');
+
+            dernierId = selectedOperatorId;
+
+        }
+
+    }
+
+});

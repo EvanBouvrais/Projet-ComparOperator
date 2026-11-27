@@ -25,10 +25,13 @@
     $errorsReview = [];
 
     // Traitement du nouveau commentaire
+    $selectedOperatorId = 0;
     if (isset($_POST['addReview'])) {
 
         $author = trim($_POST['name']);
         $operatorId = (int) $_POST['tour_operator_id'];
+
+        $selectedOperatorId = $operatorId;
 
         if (!$manager->hasAlreadyReviewed($author, $operatorId)) {
 
@@ -77,7 +80,8 @@
     <title>DESTINÉTION - Tour-opérateurs</title>
 </head>
 
-<body class="font-['Anton'] bg-[url('../assets/backgrounds/ciel.png')] bg-cover bg-center bg-no-repeat bg-fixed min-h-screen">
+<body data-selected-operator="<?= $selectedOperatorId ?>"
+class="font-['Anton'] bg-[url('../assets/backgrounds/ciel.png')] bg-cover bg-center bg-no-repeat bg-fixed min-h-screen">
 
     <main class="cadre-operateur bg-[#f5f5f5] m-25 rounded-[35px] border-15 border-[#EDE9E9]/40 bg-clip-padding">
 
@@ -146,7 +150,8 @@
 
                 <?php foreach ($operators as $operator) { ?>
 
-                    <div class="avis-operateur" id="avis-<?= $operator->getId() ?>" hidden>
+                    <div class="avis-operateur" id="avis-<?= $operator->getId() ?>"
+                    <?= $selectedOperatorId === $operator->getId() ? '' : 'hidden' ?>>
 
                         <h2 class="text-2xl mt-5">
 
